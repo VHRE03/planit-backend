@@ -4,8 +4,7 @@ import com.vhre.planit.modules.user.entity.enums.Provider;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(
-        description = "Data Transfer Object for creating or registering a new user. " +
-                "Supports both local accounts and OAuth2 provider-based accounts."
+        description = "Data Transfer Object for creating or registering a new user. Supports both local accounts and OAuth2 provider-based accounts."
 )
 public record UserRequestDTO(
         @Schema(

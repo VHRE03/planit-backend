@@ -15,9 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
-@SuperBuilder
-@Schema(description = "Data Transfer Object representing a user in API responses. " +
-        "Contains all user details including provider information.")
+@Schema(description = "Data Transfer Object representing a user in API responses. Contains all user details including provider information.")
 public class UserResponseDTO extends AuditableResponseDTO {
 
     @Schema(
