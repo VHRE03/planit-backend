@@ -1,12 +1,15 @@
 package com.vhre.planit.modules.user.entity;
 
 import com.vhre.planit.core.utils.auditable_entity.AuditableEntity;
+import com.vhre.planit.modules.task.entity.Task;
 import com.vhre.planit.modules.user.entity.enums.Provider;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -31,7 +34,7 @@ public class User extends AuditableEntity {
     @Column(name = "username", length = 50)
     private String username;
 
-    @Column(name = "email", nullable = false, length = 100)
+    @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
 
     @Column(name = "password_hash")
@@ -44,6 +47,10 @@ public class User extends AuditableEntity {
 
     @Column(name = "provider_id")
     private String providerId;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> tasks = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
